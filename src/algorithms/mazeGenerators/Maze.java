@@ -23,7 +23,7 @@ public class Maze {
         return End;
     }
 
-    public void print() {
+    public void print() {    //prints for Y growing when 'walking' down and X growing when 'walking' right
         if (this.End == null) {
             return;
         }
