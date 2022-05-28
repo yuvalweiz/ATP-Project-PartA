@@ -1,6 +1,6 @@
 package algorithms.search;
 
-public abstract class AState {
+public abstract class AState {     //uses to identify a move and what cost it took in a maze
     int cost;
     AState camefrom;
 

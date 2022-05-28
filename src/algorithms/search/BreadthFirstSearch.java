@@ -13,15 +13,14 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
         states.put(origin.getStartState().toString(),origin.getStartState());
         while (!visited.isEmpty()) {
 
-            AState currentState = visited.poll();
+            AState currState = visited.poll();
 
-            if (currentState.equals(origin.getGoalState()))
-                return currentState;
-            // Iterator through the possibles states of current state.
-            for (AState neighbour : origin.getAllPossibleStates(currentState)) {
-                if (!states.containsKey(neighbour.toString())){
-                    states.put(neighbour.toString(),neighbour);
-                    visited.add(neighbour);
+            if (currState.equals(origin.getGoalState()))
+                return currState;
+            for (AState nearBy : origin.getAllPossibleStates(currState)) {
+                if (!states.containsKey(nearBy.toString())){
+                    states.put(nearBy.toString(),nearBy);
+                    visited.add(nearBy);
                 }
             }
         }

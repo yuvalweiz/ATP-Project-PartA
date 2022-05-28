@@ -1,5 +1,5 @@
 package algorithms.mazeGenerators;
-public class Position {
+public class Position {   //used to identify a cell in the maze matrix
     int x;
     int y;
     boolean visited;

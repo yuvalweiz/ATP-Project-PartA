@@ -12,7 +12,7 @@ public class SearchableMaze implements ISearchable{
         this.maze = maze;
     }
 
-    public ArrayList<AState> getAllPossibleStates(AState a)
+    public ArrayList<AState> getAllPossibleStates(AState a)     //returns all the states that are reachable
     {
         ArrayList<AState> statelist=new ArrayList<AState>();
         MazeState m= (MazeState)a;

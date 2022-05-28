@@ -15,7 +15,7 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
     }
 
     @Override
-    public int getNumberOfNodesEvaluated() {
+    public int getNumberOfNodesEvaluated() {   //returns the number of cells we passed
         if (solution==null)
         {
             return 0;
@@ -23,7 +23,7 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
         return solution.getSolutionPath().size();
     }
 
-    public Solution backTrackingToStartState(AState goalState) {
+    public Solution backTrackingToStartState(AState goalState) {    //back track the solution path from the last Astate
 
         ArrayList<AState> solutionPath = new ArrayList<>();
         solutionPath.add(goalState);
