@@ -8,6 +8,9 @@ public abstract class AState {     //uses to identify a move and what cost it to
         this.camefrom = camefrom;
         this.cost=cost;
     }
+    public AState(){
+        this.cost=0;
+    }
     public int getCost() {
         return cost;
     }

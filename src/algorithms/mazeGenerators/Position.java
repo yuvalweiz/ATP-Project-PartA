@@ -1,8 +1,12 @@
+
 package algorithms.mazeGenerators;
-public class Position {   //used to identify a cell in the maze matrix
+import java.io.Serializable;
+
+public class Position implements Serializable {   //used to identify a cell in the maze matrix
     int x;
     int y;
     boolean visited;
+
 
 
 
@@ -12,6 +16,14 @@ public class Position {   //used to identify a cell in the maze matrix
         this.x = x;
         this.y = y;
         visited = false;
+    }
+    public Position (int row,int col)
+    {
+        //super();
+        this.x=row;
+        this.y= col;
+
+
     }
     public int getRowIndex()
     {

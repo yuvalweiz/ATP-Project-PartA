@@ -1,15 +1,23 @@
 package algorithms.search;
+import java.io.Serializable;
 
 import algorithms.mazeGenerators.Position;
 
-public class MazeState extends AState{
-    Position currentpos;
+public class MazeState extends AState implements Serializable{
+     final Position currentpos;
     public MazeState (Position currentpos,AState camefrom,int cost)
     {
         super(camefrom,cost);
         this.currentpos=currentpos;
 
     }
+    public MazeState (int row,int col)
+    {
+        super();
+        this.currentpos=new Position(row,col);
+
+    }
+
     @Override
     public String toString() {
         return currentpos.toString();
