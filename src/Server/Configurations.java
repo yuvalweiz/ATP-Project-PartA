@@ -5,6 +5,10 @@ import algorithms.mazeGenerators.MyMazeGenerator;
 import algorithms.mazeGenerators.SimpleMazeGenerator;
 import algorithms.mazeGenerators.EmptyMazeGenerator;
 import algorithms.search.*;
+//import jdk.internal.icu.lang.UCharacterDirection;
+
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 import java.io.*;
 import java.util.Objects;
@@ -13,17 +17,35 @@ import java.util.Properties;
 
 
     public class Configurations {
+        public static String[] names;
+
         private static Configurations MYinstance =  null;
         private static Properties prop= new Properties();
         InputStream input;
         //private static final String SOLVER_ALGORITHM = "Solver Algorithm";
         //private static final String MAZE_GENERATOR = "Maze Generator";
-
         private Configurations() {
             try{
+//                URL url =  getClass().getResource();
+                File directory = new File("./");
+                String path = directory.getAbsolutePath().replace(".","");
+                path = path + "resources\\config.properties";
+                File file = new File(path);
+                InputStream input= new FileInputStream(file);
+//                FileInputStream input = Configurations.class.getResourceAsStream(file);
+//                UCharacterDirection IOUtils;
+//                String contents = IOUtils.toString(input, StandardCharsets.UTF_8);
 
-                InputStream input = Configurations.class.getResourceAsStream("/config.properties");
-                prop.load(input);
+                int content;
+                String s = "";
+                while ((content = input.read()) != -1)
+                {
+                    s = s + (char)content;
+
+                }
+                System.out.print(s);
+                this.names = s.split("\r\n");
+
             }
             catch (IOException e)
             {
@@ -44,7 +66,8 @@ import java.util.Properties;
         }
 
         public static AMazeGenerator Newmazegenerator() {
-            String generator = prop.getProperty("mazeGeneratingAlgorithm");
+            String generator = names[0].split("=")[1];
+                    //prop.getProperty("mazeGeneratingAlgorithm");
             switch (generator){
                 case "My MazeGenerator" :
                     return new MyMazeGenerator();
@@ -58,10 +81,13 @@ import java.util.Properties;
         }
 
         public static ASearchingAlgorithm Newsearchalgo(){
-            String algo = prop.getProperty("mazeSearchingAlgorithm");
+            String algo  = names[1].split("=")[1];
+
+            //prop.getProperty("mazeSearchingAlgorithm");
+
             switch (algo){
                 case "Best first search" :
-                    return new BreadthFirstSearch();
+                    return new BestFirstSearch();
 
                 case "Breadth first search" :
                     return new BreadthFirstSearch();
@@ -74,7 +100,14 @@ import java.util.Properties;
         }
         public static int getThredsNumber(){
             {
-                int num = Integer.parseInt(prop.getProperty("threadPoolSize"));
+                String numm = names[2].split("=")[1];
+
+                int num = Integer.parseInt(numm);
+                if (null==null)
+                {
+                    return 1;
+                }
+
                 return num;
 
             }

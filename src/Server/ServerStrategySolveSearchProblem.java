@@ -25,7 +25,6 @@ public class ServerStrategySolveSearchProblem implements  IServerStrategy{
             Solution sol;
             ObjectInputStream Clientinput = new ObjectInputStream(inFromClient);
             ObjectOutputStream Clientoutput = new ObjectOutputStream(outToClient);
-            //toClient.flush();
 
             Maze maze = (Maze) Clientinput.readObject();
             String path = tempDirectoryPath+"maze"+maze.toString();
