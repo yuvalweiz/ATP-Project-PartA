@@ -90,10 +90,7 @@ public class SimpleCompressorOutputStream extends OutputStream {
             barr[i]=blist.get(i);
         }
         out.write(barr);
-        //for (i=0;i<barr.length;i++)
-        //{
-          //  System.out.println(barr[i] );
-        //}
+
 
 
     }
